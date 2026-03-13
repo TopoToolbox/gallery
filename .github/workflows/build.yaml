@@ -17,6 +17,9 @@ jobs:
           path: ~/.cache/topotoolbox
           key: tt3-gallery-data
 
+      - name: Install Pandoc
+        run: sudo apt-get install -y pandoc
+
       - name: Install Python build dependencies
         run: |
           python -m pip install --upgrade pip
