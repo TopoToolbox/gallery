@@ -3,6 +3,7 @@ name: Build gallery
 on:
   push:
     branches: ["main"]
+  pull_request:
 
 jobs:
   build:
@@ -35,6 +36,11 @@ jobs:
           products: |
             Mapping_Toolbox
             Image_Processing_Toolbox
+      - name: Ensure API key is available for MATLAB examples that require it
+        env:
+          OPENTOPOGRAPHY_API_KEY: ${{ secrets.OPENTOPOGRAPHY_API_KEY }}
+        run: |
+          printf '%s' "$OPENTOPOGRAPHY_API_KEY" > $HOME/.matlab/R2025b/opentopography.apikey
       - name: Run MATLAB build
         uses: matlab-actions/run-build@v2
       - name: Build sphinx documentation
@@ -46,6 +52,7 @@ jobs:
         with:
           path: ${{ github.workspace }}/build/html
   deploy:
+    if: ${{ github.event_name != 'pull_request' && github.repository_owner == 'TopoToolbox' }}
     needs: build
     permissions:
       pages: write
