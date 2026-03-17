@@ -24,12 +24,22 @@ exclude_patterns = ['build']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'basic'
+html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
 
 html_title = "TopoToolbox Gallery"
-html_logo = "_static/logo.png"
+html_logo = "_static/logo_small.png"
 
 html_theme_options = {
-    "nosidebar": True
+    "logo" : {
+        "text" : "TopoToolbox Gallery"
+    }
 }
+
+html_sidebars = {
+    "index" : [],
+    "notebooks/index" : [],
+    #"notebooks/**" : ["sbt-sidebar-nav.html"]
+}
+
+html_sourcelink_suffix = ''

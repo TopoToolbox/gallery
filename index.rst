@@ -1,8 +1,15 @@
+:html_theme.sidebar_secondary.remove:
+
 TopoToolbox Gallery
 ===================
 
-.. nbgallery::
+.. nblinkgallery::
    :glob:
+
+   notebooks/*/*/*
+
+.. toctree::
    :hidden:
 
-   notebooks/*/*
+   Python <notebooks/python>
+   MATLAB <notebooks/matlab>
