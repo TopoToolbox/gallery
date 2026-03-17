@@ -45,7 +45,15 @@ end
 
 function docsTask(~)
 
-export("notebooks/matlab/introduction.mlx", ...
-    "notebooks/matlab/introduction.ipynb", Run=true)
+notebooks = struct2table(dir("notebooks/**/*.mlx"));
+
+for i = 1:size(notebooks,1)
+    mlx = string(fullfile( ...
+        notebooks.folder(i), ...
+        notebooks.name(i)));
+    [path, name, ~] = fileparts(mlx);
+    nb = fullfile(path, name+".ipynb");
+    export(mlx, nb, Run=true);
+end
 
 end

@@ -5,4 +5,4 @@ TopoToolbox Gallery
    :glob:
    :hidden:
 
-   notebooks/**
+   notebooks/*/*
