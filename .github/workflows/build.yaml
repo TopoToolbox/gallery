@@ -3,7 +3,6 @@ name: Build gallery
 on:
   push:
     branches: ["main"]
-  pull_request:
 
 jobs:
   build:
@@ -28,6 +27,8 @@ jobs:
           OPENTOPOGRAPHY_API_KEY: ${{ secrets.OPENTOPOGRAPHY_API_KEY }}
         run: |
           printf '%s' "$OPENTOPOGRAPHY_API_KEY" > $HOME/.opentopography.txt
+          mkdir -p $HOME/.matlab/R2025b
+          cp $HOME/.opentopography.txt $HOME/.matlab/R2025b/opentopography.apikey
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v2
         with:
