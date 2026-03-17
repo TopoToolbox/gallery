@@ -46,13 +46,15 @@ end
 function docsTask(~)
 
 notebooks = struct2table(dir("notebooks/**/*.mlx"));
-
-for i = 1:size(notebooks,1)
+disp(notebooks);
+for i = 1:size(notebooks, 1)
     mlx = string(fullfile( ...
-        notebooks.folder(i), ...
-        notebooks.name(i)));
+        notebooks{i, "folder"}, ...
+        notebooks{i, "name"}));
     [path, name, ~] = fileparts(mlx);
     nb = fullfile(path, name+".ipynb");
+
+    fprintf("Rendering %s as %s\n", mlx, nb)
     export(mlx, nb, Run=true);
 end
 
