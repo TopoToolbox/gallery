@@ -13,7 +13,7 @@ function installtt3Task(~)
 
 tlbxs = struct2table(matlab.addons.toolbox.installedToolboxes());
 
-if ismember("TopoToolbox", tlbxs.Name)
+if ~isempty(tlbxs) && ismember("TopoToolbox", tlbxs.Name)
     return
 end
 
