@@ -55,7 +55,7 @@ for i = 1:size(notebooks, 1)
     nb = fullfile(path, name+".ipynb");
 
     fprintf("Rendering %s as %s\n", mlx, nb)
-    export(mlx, nb, Run=true, FigureFormat="png");
+    export(mlx, nb, Run=true, FigureFormat="png", FigureResolution=120);
 
     % MATLAB currently (R2025b) exports embedded images in output cells
     % with the text/html mimetype. The images are embedded in <img> tags
