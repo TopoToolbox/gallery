@@ -37,6 +37,7 @@ jobs:
           products: |
             Mapping_Toolbox
             Image_Processing_Toolbox
+            Optimization_Toolbox
       - name: Run MATLAB build
         uses: matlab-actions/run-build@v2
       - name: Build sphinx documentation
