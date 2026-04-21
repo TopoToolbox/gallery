@@ -6,6 +6,32 @@ on:
   workflow_dispatch:
 
 jobs:
+  release:
+    if: github.repository == 'TopoToolbox/gallery'
+    name: Create release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          fetch-tags: true # Fetch all the tags so that we compute release number correctly    
+      - name: Generate tag
+        id: tag
+        run: |
+          PREFIX="release-$(date +'%Y%m%d')-"
+          MAX=$(git tag -l "${PREFIX}*" | sed -E "s/^${PREFIX}([0-9]+)/\1/" | sort -n | tail -n1)
+          NEXT=$((${MAX:-0} + 1))
+          NEW_TAG="${PREFIX}${NEXT}"
+          echo "TAG=$NEW_TAG" >> $GITHUB_OUTPUT
+          echo "TAG=$NEW_TAG" >> $GITHUB_ENV
+          echo "This release will be tagged: $NEW_TAG"
+      - name: Create release
+        run: |
+          gh release create $TAG --target main --generate-notes --latest
   build:
     runs-on: ubuntu-latest
     steps:
