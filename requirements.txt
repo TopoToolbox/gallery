@@ -3,3 +3,4 @@ sphinx
 sphinx-book-theme
 nbsphinx
 notebook
+cmocean
