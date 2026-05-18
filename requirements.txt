@@ -1,4 +1,4 @@
-topotoolbox>=0.0.10
+topotoolbox>=0.0.11
 sphinx
 sphinx-book-theme
 nbsphinx
