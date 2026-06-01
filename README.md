@@ -1,5 +1,7 @@
 # The TopoToolbox Gallery
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/TopoToolbox/gallery/HEAD)
+
 This repository hosts a collection of example workflows as interactive notebooks.
 
 The gallery itself can be viewed at https://topotoolbox.github.io/gallery.
