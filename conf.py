@@ -43,3 +43,5 @@ html_sidebars = {
 }
 
 html_sourcelink_suffix = ''
+
+nbsphinx_allow_errors = True
