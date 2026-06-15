@@ -18,6 +18,15 @@ can use the templates for :doc:`Python
 <notebooks/python/contributing/contributing>` and :doc:`MATLAB
 <notebooks/matlab/contributing/contributing>` as a starting point.
 
+Recently added
+--------------
+.. postlist:: 1
+   :format: {title} by {author} on {date}
+   :excerpts:
+   :sort:
+
+All Entries
+-----------
 .. nblinkgallery::
    :glob:
 

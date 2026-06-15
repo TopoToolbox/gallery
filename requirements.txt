@@ -1,6 +1,6 @@
 topotoolbox>=0.0.12
 sphinx
-sphinx-book-theme
+pydata-sphinx-theme
 nbsphinx
 notebook
 cmocean
