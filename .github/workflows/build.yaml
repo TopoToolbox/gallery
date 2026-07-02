@@ -15,7 +15,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: TopoToolbox/actions/checkout@main
         with:
           fetch-depth: 0
           fetch-tags: true # Fetch all the tags so that we compute release number correctly    
@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: TopoToolbox/actions/checkout@main
       - name: Restore data cache
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        uses: TopoToolbox/actions/cache@main
         with:
           path: ~/.cache/topotoolbox
           key: tt3-gallery-data
@@ -57,7 +57,7 @@ jobs:
           mkdir -p $HOME/.matlab/R2025b
           cp $HOME/.opentopography.txt $HOME/.matlab/R2025b/opentopography.apikey
       - name: Setup MATLAB
-        uses: matlab-actions/setup-matlab@a0180c939fb1a28de13f44f7b778b912384ced1f # v 3.0.1
+        uses: TopoToolbox/actions/setup-matlab@main
         with:
           release: R2025b
           cache: true
@@ -67,13 +67,13 @@ jobs:
             Optimization_Toolbox
             Statistics_and_Machine_Learning_Toolbox
       - name: Run MATLAB build
-        uses: matlab-actions/run-build@e6fa4ea64b81a3a277395febd62db266faca1d0c # v 3.1.1
+        uses: TopoToolbox/actions/run-build@main
       - name: Build sphinx documentation
         run: |
           make clean
           make html
       - name: Package artifact
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        uses: TopoToolbox/actions/upload-pages-artifact@main
         with:
           path: ${{ github.workspace }}/build/html
   deploy:
@@ -89,4 +89,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+        uses: TopoToolbox/actions/deploy-pages@main
