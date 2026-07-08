@@ -59,7 +59,7 @@ jobs:
       - name: Setup MATLAB
         uses: TopoToolbox/actions/setup-matlab@main
         with:
-          release: R2025b
+          release: latest
           cache: true
           products: |
             Mapping_Toolbox
