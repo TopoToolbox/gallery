@@ -14,7 +14,10 @@ author = 'TopoToolbox Contributors'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['nbsphinx']
+extensions = ['nbsphinx',
+              'ablog',
+              'sphinx.ext.intersphinx'
+              ]
 
 templates_path = ['_templates']
 exclude_patterns = ['build']
@@ -39,9 +42,21 @@ html_theme_options = {
 html_sidebars = {
     "index" : [],
     "notebooks/index" : [],
-    #"notebooks/**" : ["sbt-sidebar-nav.html"]
+    "notebooks/**" : ["sidebar-collapse",
+                      "ablog/postcard",
+                      "sidebar-nav-bs",
+                      ]
 }
 
 html_sourcelink_suffix = ''
 
 nbsphinx_allow_errors = True
+
+post_auto_image = 1
+post_auto_excerpt=0
+
+blog_authors = {
+    'wkearn': ('William Kearney', 'https://wskearney.com'),
+    'wschwanghart': ('Wolfgang Schwanghart', 'https://topotoolbox.wordpress.com'),
+    'bgailleton': ('Boris Gailleton', 'https://bgailleton.github.io'),
+}
