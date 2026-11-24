@@ -5,3 +5,4 @@ nbsphinx
 notebook
 cmocean
 landlab
+pydivide[plot] @ git+https://github.com/ATLAS-Topo/pydivide@v0.2.0
